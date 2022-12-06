@@ -9,7 +9,7 @@ const Support = React.lazy(() => import('./Support'))
 const Loading = () => <div>Loading...</div>;
 
 const router = createBrowserRouter([{
-  path: "/time-gen/",
+  path: "/",
   children: [{
     element: <Suspense fallback={<Loading />}><Home /></Suspense>,
     index: true
