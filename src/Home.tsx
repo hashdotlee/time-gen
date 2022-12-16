@@ -1,9 +1,11 @@
 import { ReactNode, useState } from "react";
 import ReactPlayer from "react-player";
-import { ChevronDownIcon, HandRaisedIcon, PencilIcon, PlayCircleIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { ArrowRightOnRectangleIcon, ChevronDownIcon, HandRaisedIcon, PencilIcon, PlayCircleIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import Slider from 'react-perfect-slider'
 import { useInView } from 'react-intersection-observer';
+import CountDown from "./components/CountDown";
+import SnowWrapper from "./components/SnowWrapper";
 
 
 export function FAQItem({ question, answer }: { question: string; answer: ReactNode }) {
@@ -74,10 +76,44 @@ export function StepItem({ title, desc, examples, num, offset }: any) {
 
 export default function Home() {
   const [playVideo, setPlayVideo] = useState(false);
+  const menus = [
+    {
+      name: "Home",
+      path: "/home",
+      important: false
+    },
+    {
+      name: "Presale",
+      path: "/presale",
+      important: true
+    },
+    {
+      name: "Product",
+      path: "/products",
+      important: false
+    },
+    {
+      name: "My purchase",
+      path: "/my-purchases",
+      important: false
+    }
+  ]
   return (
     <>
-      <div className="bg-[linear-gradient(180deg,hsla(0,0%,100%,.38),hsla(0,0%,100%,.38)),url('https://global-uploads.webflow.com/63234a846c8cfe190247a6b7/636fc25e71bc7374d6a2d00e_waves-bg-compressed.png')] snap-y h-screen snap-mandatory overflow-y-scroll">
-        <header className="w-full h-full relative snap-start bg-black overflow-hidden">
+      <header className="fixed top-0 items-center bg-black text-white z-50 shadow-sm flex gap-4 px-1 h-[56px] w-full">
+        <div className="w-[56px] h-[56px] p-2">
+          <img src="http://placekitten.com/g/200/200" alt="logo" className="w-full h-full rounded-full" />
+        </div>
+        <ul className={`hidden md:flex items-center gap-2`}>
+          {menus.map(item => <Link to={item.path} className={`py-2 px-4 rounded-md font-semibold hover:text-black hover:bg-yellow-200 uppercase ${item.important ? "text-rose-600" : ""}`}>{item.name}</Link>)}
+        </ul>
+        <div className="ml-auto font-semibold uppercase px-4 py-2 rounded-md hover:bg-yellow-200 cursor-pointer flex hover:text-black items-center gap-2">
+          <span>Login/Register</span>
+          <ArrowRightOnRectangleIcon className="w-6 h-6" />
+        </div>
+      </header>
+      <div className="pt-[56px] bg-[linear-gradient(180deg,hsla(0,0%,100%,.38),hsla(0,0%,100%,.38)),url('https://global-uploads.webflow.com/63234a846c8cfe190247a6b7/636fc25e71bc7374d6a2d00e_waves-bg-compressed.png')] overflow-y-auto">
+        <div className="w-full video-wrapper relative bg-black overflow-hidden">
           <div>
             <ReactPlayer
               url="https://www.youtube.com/watch?v=CLeZyIID9Bo&t=4520s"
@@ -94,15 +130,20 @@ export default function Home() {
           >
             <div className="relative w-full h-full flex flex-col items-center justify-center">
               <div className="flex-col relative items-center justify-center flex w-full h-full">
-                <div className="absolute left-0 top-0 p-8">
-                  <ul className="text-2xl uppercase">
-                    <li className="hover:underline mb-2">
-                      <Link to="/login">Login</Link>
-                    </li>
-                    <li className="hover:underline">
-                      <Link to="/support">Support</Link>
-                    </li>
-                  </ul>
+                <div className="absolute w-full z-30 top-0 bg-zinc-200 p-4">
+                  <SnowWrapper>
+                  </SnowWrapper>
+                  <div className="flex flex-col gap-3 md:flex-row w-full max-w-[1068px] items-center md:items-start mx-auto md:justify-between">
+                    <div className="self-center">
+                      <span className="uppercase font-semibold bg-red-700 px-4 py-2 rounded-md">presale</span>
+                      <span className="font-semibold uppercase text-zinc-900 ml-3">deploy time left: </span>
+                      <CountDown cn="text-white text-lg font-semibold ml-3 rounded-md bg-zinc-900 px-4 py-2" />
+                    </div>
+                    <div className="text-zinc-900 flex gap-2 md:block ">
+                      <div className="uppercase tex-lg font-semibold">Purchase now</div>
+                      <div>For onetime only 50% discount</div>
+                    </div>
+                  </div>
                 </div>
                 <div className="aspect-1 w-32">
                   <img
@@ -111,15 +152,8 @@ export default function Home() {
                   />
                 </div>
                 <h1 className="text-[70px] uppercase font-bold">
-                  The real world
+                  Time generator
                 </h1>
-                <div className="uppercase text-2xl">click to play video</div>
-                <button
-                  onClick={() => setPlayVideo(!playVideo)}
-                  className="w-20 h-20"
-                >
-                  <PlayCircleIcon />
-                </button>
               </div>
             </div>
           </div>
@@ -134,7 +168,7 @@ export default function Home() {
             <ChevronDownIcon className="animate-bounce w-8 inline-block" />
           </div>
           <div className="w-full h-16 absolute z-20 buttom-0 bg-gradient-to-b from-black"></div>
-        </header>
+        </div>
         <section
           id="section_1"
           className="h-full relative snap-start scroll-pb-16 overflow-hidden"
