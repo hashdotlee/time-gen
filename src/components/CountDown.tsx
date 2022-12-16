@@ -22,9 +22,9 @@ export default function CountDown({ cn }: { cn?: string }) {
   });
   return (
     <span className={cn}>
-      {day < 10 ? "0" + day : day}D : {hour < 10 ? "0" + hour : hour}H :{" "}
-      {minute < 10 ? "0" + minute : minute}M :{" "}
-      {second < 10 ? "0" + second : second}S
+      {day < 10 ? "0" + day : day} D : {hour < 10 ? "0" + hour : hour} H :{" "}
+      {minute < 10 ? "0" + minute : minute} M :{" "}
+      {second < 10 ? "0" + second : second} S
     </span>
   );
 }
