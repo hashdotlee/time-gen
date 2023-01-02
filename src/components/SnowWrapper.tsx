@@ -13,11 +13,11 @@ export default function SnowWrapper({ children }: SnowWrapperProps) {
       opacity: number;
       time: number;
     }[] = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 200; i++) {
       let randomLeft = Math.floor(Math.random() * maxWidth);
       let randomOpa = (Math.floor(Math.random() * 100) % 10) * 10 + 10;
-      let randomTime = Math.floor(Math.random() * 10) + 1;
-      let randomWidth = (Math.floor(Math.random() * 5) % 5) / 4;
+      let randomTime = Math.floor(Math.random() * 3) + 3;
+      let randomWidth = (Math.floor(Math.random() * 3) % 5) / 4;
       s.push({
         top: 0,
         left: randomLeft,
@@ -38,7 +38,8 @@ export default function SnowWrapper({ children }: SnowWrapperProps) {
             style={{
               width: item.width + "rem",
               height: item.width + "rem",
-              animation: `fall ${item.time}s linear infinite`,
+              animation: `fall-${Math.floor(Math.random() * 5 + 1)} ${item.time
+                }s linear infinite`,
               left: item.left,
               opacity: item.opacity + "%",
             }}

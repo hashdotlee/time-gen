@@ -2,6 +2,8 @@ import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const Login = React.lazy(() => import('./Login'))
 const Home = React.lazy(() => import('./Home'))
 const Support = React.lazy(() => import('./Support'))
