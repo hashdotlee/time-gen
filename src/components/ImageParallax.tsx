@@ -16,7 +16,7 @@ export default function ImageParallax({ width, height, src, alt }: Props) {
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => setOffset(window.pageYOffset);
+    const onScroll = () => setOffset(window.pageYOffset % window.innerHeight);
     // clean up code
     window.removeEventListener("scroll", onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
