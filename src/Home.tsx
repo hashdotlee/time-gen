@@ -14,6 +14,8 @@ import Slider from "./components/Slider";
 import Input from "./components/Input";
 import MatrixRain from "./components/MatrixRain";
 import ImageParallax from "./components/ImageParallax";
+import Logo from "./components/Logo";
+import LogoImage from "./components/LogoImage";
 
 export interface SlideProps {
   content: string;
@@ -142,11 +144,7 @@ export default function Home() {
       <header>
         <nav className="top-0 fixed scroll-smooth items-center bg-black text-white z-50 shadow-sm flex gap-4 px-1 h-[64px] w-full">
           <div className="w-[56px] h-[56px] p-2">
-            <img
-              src="http://placekitten.com/g/200/200"
-              alt="logo"
-              className="w-full h-full rounded-full"
-            />
+            <LogoImage />
           </div>
           <ul className={`hidden md:flex items-center gap-2`}>
             {menus.map((item) => (
@@ -208,15 +206,9 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="aspect-1 w-32">
-                  <img
-                    src="http://placekitten.com/g/200/200"
-                    className="w-full h-full rounded-full"
-                  />
+                <div className="md:w-1/2 max-w-full">
+                  <Logo />
                 </div>
-                <h1 className="text-[70px] uppercase tracking-wider font-bold">
-                  Time generator
-                </h1>
               </div>
             </div>
           </div>
