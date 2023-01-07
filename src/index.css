@@ -6,6 +6,15 @@
   .video-wrapper {
     height: calc(100vh - 56px);
   }
+  .red-pill .pill {
+    transform-origin: center;
+  }
+  .red-pill:hover .pill {
+    transform: rotateX(90deg) translateX(-50%) translateY(-50%);
+  }
+  .blue-pill:hover .pill {
+    transform: rotateX(90deg) translateX(-50%) translateY(-50%);
+  }
 }
 
 @keyframes fall-1 {
