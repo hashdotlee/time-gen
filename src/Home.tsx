@@ -33,8 +33,8 @@ export function FAQItem({
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="p-6 my-3 text-lg border transition-[height]">
-      <div className="flex cursor-pointer items-center justify-between"
+    <div className="my-3 bg-white text-lg border transition-all">
+      <div className="flex p-4 cursor-pointer items-center justify-between"
         onClick={() => {
           setOpen(!open);
         }}
@@ -45,9 +45,9 @@ export function FAQItem({
             }`}
         />
       </div>
-      {open && <div className={`transition-[height] duration-500 ease-in-out text-lg ${!open ? "h-0 overflow-hidden" : "h-20"}`}>
+      <div className={`transition-[height] ease-in-out px-6 text-lg ${!open ? "h-0 overflow-hidden" : "h-20"}`}>
         {answer}
-      </div>}
+      </div>
     </div>
   );
 }
@@ -85,11 +85,11 @@ export function VideoPlayerWrapper({ children }: { children?: ReactNode }) {
 export function StepItem({ desc, icon, index }: any) {
   const Icon = icon;
   return (
-    <div className="rounded-full border-2 aspect-square flex items-center flex-col justify-center grow p-4 text-2xl">
+    <div className="rounded-full bg-white border-[4px] aspect-square flex items-center flex-col justify-between grow md:max-w-[300px] py-8 text-2xl">
       <span className="inline-flex items-center justify-center font-semibold bg-neutral-800 align-middle text-white rounded-full w-12 h-12">{index}</span>
       <div className="prose-xl text-xl my-4">{desc}</div>
       <div className="">
-        <Icon className="w-12 h-12 mx-auto" />
+        <Icon className="w-20 h-20 mx-auto" />
       </div>
     </div>
   );
@@ -121,7 +121,7 @@ export default function Home() {
   ];
   return (
     <>
-      <header>
+      <header className="overflow-x-hidden">
         <nav className="top-0 fixed scroll-smooth items-center bg-black text-white z-50 shadow-sm flex gap-4 px-1 h-[64px] w-full">
           <div className="w-[56px] h-[56px] p-2">
             <LogoImage />
@@ -203,9 +203,10 @@ export default function Home() {
           <div className="w-full h-16 absolute z-20 buttom-0 bg-gradient-to-b from-black"></div>
         </div>
       </header>
-      <main className="">
-        <div className="md:container md:mx-auto">
-          <section className="my-20">
+      <main>
+        <div className="bg-[url('./assets/background.svg')] bg-no-repeat fixed top-0 w-full h-full z-[-1] opacity-10"></div>
+        <div>
+          <section className="my-20 md:container md:mx-auto">
             <div className="uppercase my-[50px] px-3 text-[48px] font-bold">What is time generator?</div>
             <div className="flex -mx-3 px-3 py-3 flex-wrap justify-between">
               <article className="w-full md:w-1/2 px-6 prose-sm max-w-prose">
@@ -232,36 +233,37 @@ export default function Home() {
                   src={getImage("watch", 2000, 2000)}
                   alt="watch"
                   width="100%"
-                  height="400px"
+                  height="100%"
                 />
               </div>
 
             </div>
           </section>
-          <div className="bg-black left-0 w-screen h-full absolute z-[-1]"></div>
-          <section className="text-white relative h-screen">
-            <div className="uppercase mt-36 mb-12 border-l-[10px] px-4 border-red-500 text-[48px] font-bold">
-              <div>How it can change your life?</div>
-              <div>Have you ever?</div>
-            </div>
-            <div className="relative">
-              <div>
-                <Slider>
-                  {[1, 2, 3, 4, 5].map(item => (
-                    <div className=" text-black px-4 bg-white">
-                      <div className="flex border bg-white gap-4 px-8 py-4 justify-between">
-                        <div className="text-[36px]">Image description</div>
-                        <img src={getImage("watch", 300, 300)} /></div>
-                    </div>
-                  )
-                  )}
-                </Slider>
+          <section className="text-white relative h-screen bg-black py-4 my-12">
+            <div className="md:container md:mx-auto">
+              <div className="uppercase my-12 border-l-[10px] px-4 border-red-500 text-[48px] font-bold">
+                <div>How it can change your life?</div>
+                <div>Have you ever?</div>
               </div>
-              <div className="absolute w-[200px] h-full bg-gradient-to-r from-black/90 to-white/0 left-0 top-0"></div>
-              <div className="absolute w-[200px] h-full bg-gradient-to-l from-black/90 to-white/0 right-0 top-0"></div>
+              <div className="relative">
+                <div>
+                  <Slider>
+                    {[1, 2, 3, 4, 5].map(item => (
+                      <div className=" text-black px-4 bg-white">
+                        <div className="flex border bg-white gap-4 px-8 py-4 justify-between">
+                          <div className="text-[36px]">Image description</div>
+                          <img src={getImage("watch", 300, 300)} /></div>
+                      </div>
+                    )
+                    )}
+                  </Slider>
+                </div>
+                <div className="absolute w-[200px] h-full bg-gradient-to-r from-black/90 to-white/0 left-0 top-0"></div>
+                <div className="absolute w-[200px] h-full bg-gradient-to-l from-black/90 to-white/0 right-0 top-0"></div>
+              </div>
             </div>
           </section>
-          <section>
+          <section className="md:container py-4 mb-24 md:mx-auto">
             <div className="text-[2rem] font-bold uppercase text-center">
               <div>Yes?</div>
               <div>Then you have found your</div>
@@ -294,56 +296,64 @@ export default function Home() {
                   src={getImage("watch", 2000, 2000)}
                   alt="watch"
                   width="100%"
-                  height="400px"
+                  height="100%"
                 />
               </div>
 
             </div>
           </section>
-          <section>
-            <div className="uppercase my-[50px] px-3 text-[48px] font-bold">Why is time generator?</div>
-            <div>
-              <div className="flex flex-wrap prose-base justify-center -mx-32">
+          <section className="py-4 my-24">
+            <div className="md:container md:mx-auto">
+              <div className="uppercase mb-[50px] px-3 text-[48px] font-bold">Why is time generator?</div>
+              <div>
+                <div className="flex flex-wrap prose-base justify-center -mx-32">
+                  {[
+                    {
+                      content: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+                    },
+                    {
+                      content: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+                    },
+                    {
+                      content: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+                    },
+                    {
+                      content: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+                    },
+                    {
+                      content: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
+                    },
+                  ].map((item, i) => (
+                    <div className="first-letter:text-2xl first-letter:font-bold p-4 m-3 shadow-sm border md:w-1/4">
+                      {i + 1}. {item.content}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <Button classname="block mx-auto my-4 uppercase">Access now</Button>
+            </div>
+          </section>
+          <section className="bg-black">
+            <div className=" py-4 my-24 md:container md:mx-auto">
+              <div className="text-[48px] text-white typing-demo text-left inline-block px-4 font-bold border-l-[10px] border-red-500 uppercase">How does this work</div>
+              <div className="flex text-center gap-4 my-12 justify-between">
                 {[
-                  {
-                    content: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-                  },
-                  {
-                    content: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-                  },
-                  {
-                    content: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-                  },
-                  {
-                    content: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-                  },
-                  {
-                    content: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-                  },
-                ].map((item, i) => (
-                  <div className="first-letter:text-2xl first-letter:font-bold p-4 m-3 shadow-sm border md:w-1/4">
-                    {i + 1}. {item.content}
-                  </div>
-                ))}
+                  { desc: "Step 1 description", icon: MagnifyingGlassCircleIcon },
+                  { desc: "Step 2 description", icon: MagnifyingGlassCircleIcon },
+                  { desc: "Step 3 description", icon: MagnifyingGlassCircleIcon },
+                ].map((item, index) => <StepItem index={index + 1} key={index} icon={item.icon} desc={item.desc} />)}
               </div>
             </div>
-            <Button classname="block mx-auto">Access now</Button>
           </section>
-          <section className="text-center my-24">
-            <div className="text-[48px] font-bold">How does this work</div>
-            <div className="flex gap-8 my-4">
-              {[
-                { desc: "Step 1 description", icon: MagnifyingGlassCircleIcon },
-                { desc: "Step 2 description", icon: MagnifyingGlassCircleIcon },
-                { desc: "Step 3 description", icon: MagnifyingGlassCircleIcon },
-              ].map((item, index) => <StepItem index={index + 1} key={index} icon={item.icon} desc={item.desc} />)}
-            </div>
-            <div className="text-left">
-              <div className="uppercase text-[36px] font-semibold">Presale</div>
-              <span className="p-4 border inline-block my-4 font-semibold text-base">50% discount</span>
-              <div className="flex justify-center gap-8">
-                <p className="prose grow">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt tenetur quam ab dicta, omnis recusandae, laboriosam iure quos assumenda reprehenderit alias voluptatem! Architecto, dignissimos ipsa? Quisquam animi aperiam corporis dolorem?</p>
-                <div className="border-2 grow-0 text-2xl text-left flex flex-col gap-4 uppercase py-4 px-8">
+          <section className="text-center my-24 md:container md:mx-auto">
+            <div className="text-left my-12">
+              <div className="text-[48px] font-bold uppercase">presale</div>
+              <div className="flex justify-between gap-8">
+                <div className="w-2/3">
+                  <div className="p-4 border block bg-white mb-4 font-semibold text-2xl uppercase">50% discount</div>
+                  <p className="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt tenetur quam ab dicta, omnis recusandae, laboriosam iure quos assumenda reprehenderit alias voluptatem! Architecto, dignissimos ipsa? Quisquam animi aperiam corporis dolorem?</p>
+                </div>
+                <div className="border-2 bg-white w-1/3 text-2xl text-center flex flex-col gap-4 uppercase py-4">
                   <div>148 <strong>days</strong></div>
                   <div>21 <strong>hours</strong></div>
                   <div>19 <strong>minutes</strong></div>
@@ -351,11 +361,9 @@ export default function Home() {
                   <div>left</div>
                 </div>
               </div>
-              <Button classname="block mx-auto px-8">Access now</Button>
+              <Button classname="block mx-auto px-8 uppercase">Access now</Button>
             </div>
-          </section>
-          <section className="text-center my-24">
-            <div className="flex border-2 shadow-sm my-4 text-center">
+            <div className="flex border-2 shadow-sm my-4 text-center bg-white">
               <div className="border-r-2 grow py-2 border-dashed px-4">
                 <div className="text-2xl uppercase font-semibold">presale purchase</div>
                 <div className="text-3xl">{Math.floor(Math.random() * 5000).toLocaleString("vi-VN")}</div>
@@ -380,25 +388,25 @@ export default function Home() {
               <div className="flex justify-center">
                 <Input label="email" />
               </div>
-              <Button>Subcribe Now</Button>
+              <Button classname="text-lg uppercase">Subcribe Now</Button>
             </form>
           </section>
-          <section className="text-center">
-            <article className="border prose mx-auto p-6">
+          <section className="text-center md:container my-24 py-4 md:mx-auto">
+            <article className="border prose mx-auto p-6 bg-white">
               <div className="text-[36px] font-bold uppercase">The choice is your</div>
               <p>Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.</p>
             </article>
             <div className="font-semibold mt-4 text-2xl">The choice is your, time owner.</div>
-            <div className="font-semibold mb-4 text-2xl">do you want to escape it or not ?</div>
-            <div className="flex justify-center gap-4 my-4 font-semibold text-lg">
-              <div className="p-3 red-pill relative border-2 border-blue-600 cursor-pointer hover:bg-blue-600 hover:text-white ease-in-out transition-all text-blue-600">
+            <div className="font-semibold mb-4 text-2xl">Do you want to escape it or not ?</div>
+            <div className="flex justify-center gap-4 my-12 font-semibold text-lg">
+              <div className="p-3 red-pill relative border-2 bg-white border-blue-600 cursor-pointer hover:bg-blue-600 hover:text-white ease-in-out transition-all text-blue-600">
                 <div className="absolute pill top-0 left-1/2 -translate-y-1/2 -translate-x-1/2">
                   <span className="w-8 inline-block h-5 border-2 bg-white rounded-l-full border-blue-500 border-r"></span>
                   <span className="w-8 inline-block h-5 border-2 bg-white border-blue-500 rounded-r-full"></span>
                 </div>
                 Get back to amazon seller center
               </div>
-              <div className="p-3 border-2 blue-pill border-red-600 relative text-red-600 cursor-pointer hover:bg-red-600 hover:text-white transition-all ease-in-out">
+              <div className="p-3 border-2 blue-pill bg-white border-red-600 relative text-red-600 cursor-pointer hover:bg-red-600 hover:text-white transition-all ease-in-out">
                 <div className="absolute top-0 pill left-1/2 -translate-y-1/2 -translate-x-1/2">
                   <span className="w-8 inline-block h-5 border-2 bg-white rounded-l-full border-red-500 border-r"></span>
                   <span className="w-8 inline-block h-5 border-2 bg-white border-red-500 rounded-r-full"></span>
@@ -407,7 +415,7 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section>
+          <section className="md:container md:mx-auto">
             <div className="text-center font-semibold text-[36px]">FAQs</div>
             <div>
               {[
@@ -415,11 +423,11 @@ export default function Home() {
                 { question: "Question 2", answer: "Answer 2" },
               ].map(item => <FAQItem {...item} />)}
             </div>
-            <Button classname="block mx-auto">Access Now</Button>
+            <Button classname="block mx-auto uppercase">Access Now</Button>
           </section>
         </div>
       </main >
-      <footer className="bg-zinc-900 text-lg mt-12 h-[256px] p-4 w-full">
+      <footer className="bg-black text-lg mt-12 h-[256px] p-4 w-full">
         <div className="max-w-[1068px] mx-auto text-neutral-100 p-4">
           <ul>
             <li>

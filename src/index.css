@@ -15,6 +15,26 @@
   .blue-pill:hover .pill {
     transform: rotateX(90deg) translateX(-50%) translateY(-50%);
   }
+
+  .typing-demo {
+    width: 21ch;
+    animation: typing 2s steps(21);
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 48px;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
 }
 
 @keyframes fall-1 {
